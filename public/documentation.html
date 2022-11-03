@@ -4,13 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie API docs</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
     
     <h1>Movie API</h1>
 
-    <p>This API provides a list of movies starring Jessica Chastain, searchable by genre and actors.</p>
+    <p>This API provides a list of movies starring Jessica Chastain. Users can register, browse movies and see details about them, as well as make lists of their favorite movies.</p>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request</th>
+                    <th>URL</th>
+                    <th>HTTP method</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Create a new user</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td>A JSON object with user data to be added, for example:<br>{<br>id: 1,<br>name: 'Susan',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>} </td>
+                    <td>A JSON object with data on student that has been added, including an id, for example:<br>{<br>id: 1,<br>name: 'Susan',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>id: 21511<br>}</td>
+                </tr>
+                <tr>
+                    <td>Create new favorite movie for user</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>POST</td>
+                    <td>None</td>
+                    <td>A confirmation message that the movie has been added, for example: 'Miss Sloane has been added to user 2 array.'</td>
+                </tr>
+                <tr>
+                    <td>Return a list of all movies to the user</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>An array of JSON objects, each one containing data about movies in the database.</td>
+                </tr>
+                <tr>
+                    <td>Return details about a movie to the user</td>
+                    <td>/movies/:title</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object containing details about the movie, for example:<br>{<br>title: 'A Most Violent Year',<br>director: 'J.C.Chandor',<br>genre: ['action', 'crime', 'drama']<br>}</td>
+                </tr>
+                <tr>
+                    <td>Return genre of the movie by title</td>
+                    <td>/movies/genre/:title</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>An array containing genre descriptions of the movie, for example:<br>[<br>"drama"<br>] </td>              
+                </tr>
+                <tr>
+                    <td>Return data about a director</td>
+                    <td>/movies/director/:directorName</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object containing info about a director, for example:<br>{<br>name: 'Aaron Sorkin',<br>year of birth: '1973',<br>country of birth: 'USA']<br>} </td>              
+                </tr>
+                <tr>
+                    <td>Update user details</td>
+                    <td>/users/:id</td>
+                    <td>PUT</td>
+                    <td>A JSON object containing the data to be updated in user details, for example:<br>{<br>name: 'Suzie'<br>}</td>
+                    <td>A JSON object containing updated user data, for example:<br>{<br>id: 1,<br>name: 'Suzie',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>}</td>              
+                </tr>
+                <tr>
+                    <td>Delete a favorite movie from a user's list</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A message confirming that the data has been deleted from the list.</td>              
+                </tr>
+                <tr>
+                    <td>Delete (deregister) a user</td>
+                    <td>/users/:id</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A message confirming that the user has been deleted from the registry.</td>              
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 

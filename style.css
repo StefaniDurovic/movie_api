@@ -1,0 +1,20 @@
+body {
+    text-align: center;
+}
+
+table {
+    background-color: #042A2B;
+}
+  
+  thead {
+    background-color: #4f9ab8;
+  }
+  
+  tbody {
+    background-color: #90B6AD;
+  }
+  
+  th, td {
+    padding: 7px 10px;
+    text-align: left;
+  }
