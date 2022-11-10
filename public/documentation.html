@@ -29,15 +29,15 @@
                     <td>Create a new user</td>
                     <td>/users</td>
                     <td>POST</td>
-                    <td>A JSON object with user data to be added, for example:<br>{<br>id: 1,<br>name: 'Susan',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>} </td>
-                    <td>A JSON object with data on student that has been added, including an id, for example:<br>{<br>id: 1,<br>name: 'Susan',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>id: 21511<br>}</td>
+                    <td>A JSON object with user data to be added, for example:<br>{<br>Username: 'Susan',<br>Password: 'Sus2024',<br>Email: 'susan.lewis@gmail.com',<br>Birthday: '1991-05-23',<br>FavoriteMovies: ["6368faaadec8a0c53e3a6d3d"]<br>} </td>
+                    <td>A JSON object with data on user that has been added, including an id, for example:<br>{<br>id: 1bjdf,<br>Username: 'Susan',<br>Password: 'Sus2024',<br>Email: 'susan.lewis@gmail.com',<br>Birthday: '1991-05-23',<br>FavoriteMovies: ["6368faaadec8a0c53e3a6d3d"]<br>}</td>
                 </tr>
                 <tr>
                     <td>Create new favorite movie for user</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>POST</td>
                     <td>None</td>
-                    <td>A confirmation message that the movie has been added, for example: 'Miss Sloane has been added to user 2 array.'</td>
+                    <td>A JSON object with user's updated data, for example:<br>{<br>id: 1bjdf,<br>Username: 'Susan',<br>Password: 'Sus2024',<br>Email: 'susan.lewis@gmail.com',<br>Birthday: '1991-05-23',<br>FavoriteMovies: ["6368faaadec8a0c53e3a6d3d", "6368f765dec8a0c53e3a6d3a"]<br>}</td>
                 </tr>
                 <tr>
                     <td>Return a list of all movies to the user</td>
@@ -51,39 +51,39 @@
                     <td>/movies/:title</td>
                     <td>GET</td>
                     <td>None</td>
-                    <td>A JSON object containing details about the movie, for example:<br>{<br>title: 'A Most Violent Year',<br>director: 'J.C.Chandor',<br>genre: ['action', 'crime', 'drama']<br>}</td>
+                    <td>A JSON object containing details about the movie, for example:<br>{<br>Title: 'A Most Violent Year',<br>Description: '...',<br>Released: '2014',<br>Genre: {Name: 'Crime', Description: '...'},<br>Director: {Name: 'J.C.Chandor', Bio: '...', Birth: '1974'},<br>Actors: ['Oscar Isaac', 'Jessica Chastain'],<br>ImagePath: 'amostviolentyear.jpg',<br>Featured: true}</td>
                 </tr>
                 <tr>
-                    <td>Return genre of the movie by title</td>
-                    <td>/movies/genre/:title</td>
+                    <td>Return genre details by genre name</td>
+                    <td>/movies/genre/:genreName</td>
                     <td>GET</td>
                     <td>None</td>
-                    <td>An array containing genre descriptions of the movie, for example:<br>[<br>"drama"<br>] </td>              
+                    <td>A JSON object containing details about the genre, for example:<br>{<br>Name: 'drama',<br>Description: 'In film and television, drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone.'<br>}</td>              
                 </tr>
                 <tr>
-                    <td>Return data about a director</td>
+                    <td>Return data about a director by name</td>
                     <td>/movies/director/:directorName</td>
                     <td>GET</td>
                     <td>None</td>
-                    <td>A JSON object containing info about a director, for example:<br>{<br>name: 'Aaron Sorkin',<br>year of birth: '1973',<br>country of birth: 'USA']<br>} </td>              
+                    <td>A JSON object containing info about a director, for example:<br>{<br>Name: 'Aaron Sorkin',<br>Bio: '...',<br>Birth: '1973'<br>} </td>              
                 </tr>
                 <tr>
                     <td>Update user details</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>PUT</td>
-                    <td>A JSON object containing the data to be updated in user details, for example:<br>{<br>name: 'Suzie'<br>}</td>
-                    <td>A JSON object containing updated user data, for example:<br>{<br>id: 1,<br>name: 'Suzie',<br>favoriteMovies: ['Miss Sloane', 'The Tree of Life']<br>}</td>              
+                    <td>A JSON object containing the data to be updated in user details, for example:<br>{<br>Name: 'Suzie'<br>}</td>
+                    <td>A JSON object containing updated user data, for example:<br>{<br>id: 1bjdf,<br>Username: 'Suzie',<br>Password: 'Sus2024',<br>Email: 'susan.lewis@gmail.com',<br>Birthday: '1991-05-23',<br>FavoriteMovies: ["6368faaadec8a0c53e3a6d3d"]<br>}</td>              
                 </tr>
                 <tr>
                     <td>Delete a favorite movie from a user's list</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>DELETE</td>
                     <td>None</td>
-                    <td>A message confirming that the data has been deleted from the list.</td>              
+                    <td>A JSON object with user's updated data, for example:<br>{<br>id: 1bjdf,<br>Username: 'Susan',<br>Password: 'Sus2024',<br>Email: 'susan.lewis@gmail.com',<br>Birthday: '1991-05-23',<br>FavoriteMovies: ["6368faaadec8a0c53e3a6d3d"]<br>}</td>              
                 </tr>
                 <tr>
                     <td>Delete (deregister) a user</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>DELETE</td>
                     <td>None</td>
                     <td>A message confirming that the user has been deleted from the registry.</td>              
