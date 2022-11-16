@@ -6,7 +6,9 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 //connects this API to our movieDB database
-mongoose.connect('mongodb://127.0.0.1:27017/movieDB', { useNewUrlParser: true, useUnifiedTopology: true }); //important that this part goes after the above requirements
+// mongoose.connect('mongodb://127.0.0.1:27017/movieDB', { useNewUrlParser: true, useUnifiedTopology: true }); //important that this part goes after the above requirements
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); //important that this part goes after the above requirements
+
 
 const express = require('express'),
 bodyParser = require('body-parser'),
