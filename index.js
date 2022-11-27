@@ -168,7 +168,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
   });
 
 //READ all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies', /*passport.authenticate('jwt', { session: false }),*/ (req, res) => {
     Movies.find().then(movies=>res.json(movies))
     .catch((err) => {
         console.error(err);
