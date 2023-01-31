@@ -105,7 +105,7 @@ app.post('/users',
  * @requires passport
  */
 app.get('/users',passport.authenticate('jwt', {session: false}), (req,res)=>{
-  users.find()
+  Users.find()
   .then((users)=>{
       res.status(200).json(users);
   })
@@ -126,7 +126,7 @@ app.get('/users',passport.authenticate('jwt', {session: false}), (req,res)=>{
  * @requires passport
  */
 app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res)=> {
-    users.findOne({Username: req.params.Username})
+    Users.findOne({Username: req.params.Username})
     .then((user)=>{
         if(user){
             res.status(200).json(user);    
