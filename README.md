@@ -5,7 +5,7 @@
 ## Description
 
 
-A REST API that connects to a NoSQL database with access to information about different movies, directors and genres. Users are able to sign up, update personal information, and create a list of favorite movies. The project uses the MERN stack (MongoDB, Express, React, and Node.js).
+A REST API that connects to a NoSQL database with access to information about different movies, directors, genres and users. Users are able to sign up, update personal information, and create a list of favorite movies. The project uses the MERN stack (MongoDB, Express, React, and Node.js).
 
   
 

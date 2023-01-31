@@ -96,6 +96,51 @@ app.post('/users',
         });
   });
 
+  /**
+ * READ:get full user list
+ * Request body: None
+ * @name getAllUsers
+ * @kind function
+ * @returns A JSON object holding data of all the users.
+ * @requires passport
+ */
+app.get('/users',passport.authenticate('jwt', {session: false}), (req,res)=>{
+  users.find()
+  .then((users)=>{
+      res.status(200).json(users);
+  })
+  .catch((err)=>{
+      console.log(err);
+      res.status(500).send('Error: ' + err);
+  });
+});
+
+
+/**
+ * READ: get data of a single user
+ * Request body: None
+ * @name getUser
+ * @kind function
+ * @param {string} Username
+ * @returns A JSON object holding data of the particular user.
+ * @requires passport
+ */
+app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res)=> {
+    users.findOne({Username: req.params.Username})
+    .then((user)=>{
+        if(user){
+            res.status(200).json(user);    
+        } else {
+            res.status(404).send(`Username "${req.params.Username}" not found.`);
+        }
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.status(500).send('Error: ' + err);
+    });
+});
+
+
 /**
  * Add a movie to a user's list of favorites (POST)
  * Request body: None 
